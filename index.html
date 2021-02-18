@@ -95,6 +95,7 @@
         .then(json)
         .then(function (data) {
           console.log('Request succeeded with JSON response', data);
+          document.getElementById("output").innerText = data;
         })
         .catch(function (error) {
           console.log('Request failed', error);
@@ -118,6 +119,7 @@
         .then(json)
         .then(function (data) {
           console.log('Request succeeded with JSON response', data);
+          document.getElementById("output").innerText = data;
         })
         .catch(function (error) {
           console.log('Request failed', error);
@@ -133,8 +135,6 @@
           document.getElementById("recordForm").style.display = "block";
         }
         else if (action == "submit") {
-          document.getElementById("recordForm").style.display = "none";
-
           const url = document.getElementById("endpoint").value;
           const title = document.getElementById("title").value;
           const author = document.getElementById("author").value;
@@ -150,6 +150,7 @@
           .then(json)
           .then(function (data) {
             console.log('Request succeeded with JSON response', data);
+            document.getElementById("output").innerText = data;
           })
           .catch(function (error) {
             console.log('Request failed', error);
@@ -167,9 +168,6 @@
           document.getElementById("recordIDcontainer").style.display = "block";
         }
         else if (action == "submit") {
-          document.getElementById("recordForm").style.display = "none";
-          document.getElementById("recordIDcontainer").style.display = "none";
-
           const id = document.getElementById("recordID").value;
           const url = document.getElementById("endpoint").value + "/" + id;
           const title = document.getElementById("title").value;
@@ -186,6 +184,7 @@
           .then(json)
           .then(function (data) {
             console.log('Request succeeded with JSON response', data);
+            document.getElementById("output").innerText = data;
           })
           .catch(function (error) {
             console.log('Request failed', error);
@@ -211,6 +210,7 @@
         .then(json)
         .then(function (data) {
           console.log('Request succeeded with JSON response', data);
+          document.getElementById("output").innerText = data;
         })
         .catch(function (error) {
           console.log('Request failed', error);
@@ -228,6 +228,13 @@
       function json(response) {
         return response.json()
       }
+
+      function hideRecord() {
+        document.getElementById("recordForm").style.display = "none";
+        document.getElementById("recordIDcontainer").style.display = "none";
+      }
+
+      document.getElementById("action").addEventListener("change", hideRecord);
 
       window.addEventListener('DOMContentLoaded', () => {
         // Action Form Event Listener
