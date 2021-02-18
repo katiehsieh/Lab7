@@ -84,8 +84,8 @@
       // The main difference from fetchOne() will be the URL you request from; check
       // the writeup to view the URL pattern for fetch one and fetch all
       function fetchAll() {
-        document.getElementById("recordForm").display = none;
-        document.getElementById("recordIDcontainer").display = none;
+        document.getElementById("recordForm").style.display = "none";
+        document.getElementById("recordIDcontainer").style.display = "none";
         
         const url = document.getElementById("endpoint").value;
         
@@ -109,8 +109,8 @@
       // The main difference from fetchAll() will be the URL you request from; check
       // the writeup to view the URL pattern for fetch one and fetch all
       function fetchOne() {
-        document.getElementById("recordForm").display = none;
-        document.getElementById("recordIDcontainer").display = none;
+        document.getElementById("recordForm").style.display = "none";
+        document.getElementById("recordIDcontainer").style.display = "none";
 
         const id = Number(window.prompt("Enter record id", ""));
 
@@ -137,8 +137,8 @@
       // the writeup to view the URL pattern for create and update
       function createRecord(action) {
         if (action == "show") {
-          document.getElementById("recordForm").display = block;
-          document.getElementById("recordIDcontainer").display = none;
+          document.getElementById("recordForm").style.display = "block";
+          document.getElementById("recordIDcontainer").style.display = "none";
         }
         else if (action == "submit") {
           const url = document.getElementById("endpoint").value;
@@ -168,8 +168,8 @@
       // the writeup to view the URL pattern for create and update
       function updateRecord(action) {
         if (action == "show") {
-          document.getElementById("recordForm").display = block;
-          document.getElementById("recordIDcontainer").display = block;
+          document.getElementById("recordForm").style.display = "block";
+          document.getElementById("recordIDcontainer").style.display = "block";
         }
         else if (action == "submit") {
           const id = document.getElementById("recordID").value;
@@ -200,8 +200,8 @@
       // request; check the writeup to view the URL pattern for get one and delete. THERE IS NO 
       // delete all, only delete one.
       function deleteRecord() {
-        document.getElementById("recordForm").display = none;
-        document.getElementById("recordIDcontainer").display = none;
+        document.getElementById("recordForm").style.display = "none";
+        document.getElementById("recordIDcontainer").style.display = "none";
 
         const id = Number(window.prompt("Enter record id", ""));
 
