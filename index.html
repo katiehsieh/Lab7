@@ -138,13 +138,14 @@
           const url = document.getElementById("endpoint").value;
           const title = document.getElementById("title").value;
           const author = document.getElementById("author").value;
-          
+          const data = { title: title, author: author };
+
           fetch(url, {
             method: 'post',
             headers: {
               "Content-type": "application/json; charset=UTF-8"
             },
-            body: `title=${title}&author=${author}`
+            body: JSON.stringify(data)
           })
           .then(json)
           .then(function (data) {
@@ -173,13 +174,14 @@
           const url = document.getElementById("endpoint").value + "/" + id;
           const title = document.getElementById("title").value;
           const author = document.getElementById("author").value;
-          
+          const data = { title: title, author: author };
+
           fetch(url, {
             method: 'put',
             headers: {
               "Content-type": "application/json; charset=UTF-8"
             },
-            body: `title=${title}&author=${author}`
+            body: JSON.stringify(data)
           })
           .then(json)
           .then(function (data) {
