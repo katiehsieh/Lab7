@@ -94,8 +94,10 @@
         })
         .then(json)
         .then(function (data) {
-          console.log('Request succeeded with JSON response', data);
-          document.getElementById("output").innerText = JSON.stringify(data);
+          if (data != null) {
+            console.log('Request succeeded with JSON response', data);
+            document.getElementById("output").innerText = JSON.stringify(data);
+          }
         })
         .catch(function (error) {
           console.log('Request failed', error);
@@ -119,8 +121,10 @@
         })
         .then(json)
         .then(function (data) {
-          console.log('Request succeeded with JSON response', data);
-          document.getElementById("output").innerText = JSON.stringify(data);
+          if (data != null) {
+            console.log('Request succeeded with JSON response', data);
+            document.getElementById("output").innerText = JSON.stringify(data);
+          }
         })
         .catch(function (error) {
           console.log('Request failed', error);
@@ -151,8 +155,10 @@
           })
           .then(json)
           .then(function (data) {
-            console.log('Request succeeded with JSON response', data);
-            document.getElementById("output").innerText = JSON.stringify(data);
+            if (data != null) {
+              console.log('Request succeeded with JSON response', data);
+              document.getElementById("output").innerText = JSON.stringify(data);
+            }
           })
           .catch(function (error) {
             console.log('Request failed', error);
@@ -186,8 +192,10 @@
           })
           .then(json)
           .then(function (data) {
-            console.log('Request succeeded with JSON response', data);
-            document.getElementById("output").innerText = JSON.stringify(data);
+            if (data != null) {
+              console.log('Request succeeded with JSON response', data);
+              document.getElementById("output").innerText = JSON.stringify(data);
+            }
           })
           .catch(function (error) {
             console.log('Request failed', error);
@@ -213,8 +221,10 @@
         })
         .then(json)
         .then(function (data) {
-          console.log('Request succeeded with JSON response', data);
-          document.getElementById("output").innerText = JSON.stringify(data);
+          if (data != null) {
+            console.log('Request succeeded with JSON response', data);
+            document.getElementById("output").innerText = JSON.stringify(data);
+          }
         })
         .catch(function (error) {
           console.log('Request failed', error);
@@ -231,7 +241,15 @@
       }
 
       function json(response) {
-        return response.json()
+        if (response.ok) {
+          return response.json()
+        }
+        else {
+          console.log('Error', response);
+          document.getElementById("output").innerText = response.status + ": " + response.statusText;
+          return null;
+        }
+        
       }
 
       function hideRecord() {
