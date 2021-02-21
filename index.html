@@ -92,13 +92,9 @@
             "Content-type": "application/json; charset=UTF-8"
           }
         })
-        .then(json)
-        .then(function (data) {
-          console.log('Request succeeded with JSON response', data);
-          document.getElementById("output").innerText = JSON.stringify(data);
-        })
+        .then(output)
         .catch(function (error) {
-          console.log('Request failed', error);
+          requestFailed();
         });
       }
 
@@ -116,13 +112,9 @@
             "Content-type": "application/json; charset=UTF-8"
           }
         })
-        .then(json)
-        .then(function (data) {
-          console.log('Request succeeded with JSON response', data);
-          document.getElementById("output").innerText = JSON.stringify(data);
-        })
+        .then(output)
         .catch(function (error) {
-          console.log('Request failed', error);
+          requestFailed();
         });
       }
 
@@ -147,13 +139,9 @@
             },
             body: JSON.stringify(data)
           })
-          .then(json)
-          .then(function (data) {
-            console.log('Request succeeded with JSON response', data);
-            document.getElementById("output").innerText = JSON.stringify(data);
-          })
+          .then(output)
           .catch(function (error) {
-            console.log('Request failed', error);
+            requestFailed();
           });
         }
       }
@@ -181,13 +169,9 @@
             },
             body: JSON.stringify(data)
           })
-          .then(json)
-          .then(function (data) {
-            console.log('Request succeeded with JSON response', data);
-            document.getElementById("output").innerText = JSON.stringify(data);
-          })
+          .then(output)
           .catch(function (error) {
-            console.log('Request failed', error);
+            requestFailed();
           });
         }
       }
@@ -207,26 +191,27 @@
             "Content-type": "application/json; charset=UTF-8"
           }
         })
-        .then(json)
-        .then(function (data) {
-          console.log('Request succeeded with JSON response', data);
-          document.getElementById("output").innerText = JSON.stringify(data);
-        })
+        .then(output)
         .catch(function (error) {
-          console.log('Request failed', error);
+          requestFailed();
         });
       }
 
-      function status(response) {
-        if (response.status >= 200 && response.status < 300) {
-          return Promise.resolve(response)
-        } else {
-          return Promise.reject(new Error(response.statusText))
+      function output(response) {
+        if (response.ok) {
+          const data = response.json()
+          console.log('Request succeeded with JSON response', data);
+          document.getElementById("output").innerText = JSON.stringify(data);
+        }
+        else {
+          console.log('Error', response);
+          document.getElementById("output").innerText = response.status + ": " + response.statusText;
         }
       }
 
-      function json(response) {
-        return response.json()
+      function requestFailed() {
+        console.log('Request failed', error);
+        document.getElementById("output").innerText = 'Error: request failed';
       }
 
       function hideRecord() {
