@@ -92,9 +92,14 @@
             "Content-type": "application/json; charset=UTF-8"
           }
         })
-        .then(output)
+        .then(json)
+        .then(function (data) {
+          console.log('Request succeeded with JSON response', data);
+          document.getElementById("output").innerText = JSON.stringify(data);
+        })
         .catch(function (error) {
-          requestFailed();
+          console.log('Request failed', error);
+          document.getElementById("output").innerText = 'Error: request failed';
         });
       }
 
@@ -112,9 +117,14 @@
             "Content-type": "application/json; charset=UTF-8"
           }
         })
-        .then(output)
+        .then(json)
+        .then(function (data) {
+          console.log('Request succeeded with JSON response', data);
+          document.getElementById("output").innerText = JSON.stringify(data);
+        })
         .catch(function (error) {
-          requestFailed();
+          console.log('Request failed', error);
+          document.getElementById("output").innerText = 'Error: request failed';
         });
       }
 
@@ -139,9 +149,14 @@
             },
             body: JSON.stringify(data)
           })
-          .then(output)
+          .then(json)
+          .then(function (data) {
+            console.log('Request succeeded with JSON response', data);
+            document.getElementById("output").innerText = JSON.stringify(data);
+          })
           .catch(function (error) {
-            requestFailed();
+            console.log('Request failed', error);
+            document.getElementById("output").innerText = 'Error: request failed';
           });
         }
       }
@@ -169,9 +184,14 @@
             },
             body: JSON.stringify(data)
           })
-          .then(output)
+          .then(json)
+          .then(function (data) {
+            console.log('Request succeeded with JSON response', data);
+            document.getElementById("output").innerText = JSON.stringify(data);
+          })
           .catch(function (error) {
-            requestFailed();
+            console.log('Request failed', error);
+            document.getElementById("output").innerText = 'Error: request failed';
           });
         }
       }
@@ -191,9 +211,14 @@
             "Content-type": "application/json; charset=UTF-8"
           }
         })
-        .then(output)
+        .then(json)
+        .then(function (data) {
+          console.log('Request succeeded with JSON response', data);
+          document.getElementById("output").innerText = JSON.stringify(data);
+        })
         .catch(function (error) {
-          requestFailed();
+          console.log('Request failed', error);
+          document.getElementById("output").innerText = 'Error: request failed';
         });
       }
 
@@ -205,21 +230,8 @@
         }
       }
 
-      function output(response) {
-        if (response.ok) {
-          const data = response.json()
-          console.log('Request succeeded with JSON response', data);
-          document.getElementById("output").innerText = JSON.stringify(data);
-        }
-        else {
-          console.log('Error', response);
-          document.getElementById("output").innerText = response.status + ": " + response.statusText;
-        }
-      }
-
-      function requestFailed() {
-        console.log('Request failed', error);
-        document.getElementById("output").innerText = 'Error: request failed';
+      function json(response) {
+        return response.json()
       }
 
       function hideRecord() {
